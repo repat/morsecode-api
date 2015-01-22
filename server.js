@@ -20,6 +20,13 @@ function decode(req, res, next) {
   next();
 }
 
+function redirectToDocumentation(req,res,next) {
+  res.send(302, null, {
+    Location: 'https://repat.github.io/morsecode-api/'
+  });
+  next();
+}
+
 var httpOptions = {
     name: "Morsecode As A Service"
 };
@@ -28,7 +35,7 @@ var server = restify.createServer(httpOptions);
 
 server.get('/encode/:string', encode);
 server.get('/decode/:string', decode);
-
+server.get('/',redirectToDocumentation);
 
 var port = process.env.PORT || 8080;
 

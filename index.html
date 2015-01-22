@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Morsecode As A Service : Documentation morsecode-api.de">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Morsecode As A Service</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/repat/morsecode-api">View on GitHub</a>
+
+          <h1 id="project_title">Morsecode As A Service</h1>
+          <h2 id="project_tagline">Documentation morsecode-api.de</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/repat/morsecode-api/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/repat/morsecode-api/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="documentation-for-morsecode-apide" class="anchor" href="#documentation-for-morsecode-apide" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation for <a href="http://morsecode-api.de">morsecode-api.de</a>
+</h3>
+
+<p>This website documents the installation and usage of <a href="http://morsecode-api.de">morsecode-api.de</a>, a side-project I created to create and play around with REST-APIs, node.js and <a href="http://heroku.com">Heroku</a>.</p>
+
+<hr>
+
+<h4>
+<a id="get-encode" class="anchor" href="#get-encode" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET <code>/encode</code>
+</h4>
+
+<h5>
+<a id="request" class="anchor" href="#request" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request</h5>
+
+<p>Submit one parameter <code>string</code> e.g.</p>
+
+<p><code>$ curl http://morsecode-api.de/encode/LOVE</code></p>
+
+<h5>
+<a id="response" class="anchor" href="#response" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response</h5>
+
+<p>The Response has 2 attributes: <code>plaintext</code> and <code>morsecode</code>, e.g.</p>
+
+<pre><code>{
+  "plaintext":"LOVE",
+  "morsecode":".-.. --- ...- ."
+}
+</code></pre>
+
+<h4>
+<a id="get-decode" class="anchor" href="#get-decode" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET <code>/decode</code>
+</h4>
+
+<h5>
+<a id="request-1" class="anchor" href="#request-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request</h5>
+
+<p>Submit one parameter <code>string</code> and URL-encode the white spaces to <code>%20</code> e.g.</p>
+
+<p><code>$ curl http://morsecode-api.de/decode/....%20.-%20-%20.</code></p>
+
+<h5>
+<a id="response-1" class="anchor" href="#response-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response</h5>
+
+<p>The Response has 2 attributes: <code>plaintext</code> and <code>morsecode</code>, e.g.</p>
+
+<pre><code>{
+  "morsecode":".... .- - .",
+  "plaintext":"HATE"
+}
+</code></pre>
+
+<h4>
+<a id="sourcecode-and-deployment" class="anchor" href="#sourcecode-and-deployment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sourcecode and deployment</h4>
+
+<p>Get the sourcecode from GitHub.</p>
+
+<pre><code>$ mkdir morsecode-api
+$ cd morsecode-api
+$ git clone https://github.com/repat/morsecode-api.git
+</code></pre>
+
+<p>To start the app, change the <code>port</code> variable and run</p>
+
+<pre><code>$ nodemon server.js
+</code></pre>
+
+<p>As you might have noticed, the <code>Procfile</code> file is an indicator that this code could also be run on <a href="http://heroku.com">Heroku</a>. Assuming that the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up">Heroku Toolbelt is installed</a> and the repository is <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#prepare-the-app">prepared</a> you can follow the normal <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app">instruction</a> for deploying an app. Make sure that the <code>port</code> variable is set to <code>process.env.PORT</code>.</p>
+
+<h4>
+<a id="licenses" class="anchor" href="#licenses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licenses</h4>
+
+<ul>
+<li>
+<a href="nodejs.org">node.js</a> (MIT)</li>
+<li><a href="https://www.npmjs.org/">npm</a></li>
+<li>
+<a href="https://www.npmjs.com/package/morse">morse</a> (MIT)</li>
+<li>
+<a href="http://mcavage.me/node-restify/">restify</a> (MIT)</li>
+</ul>
+
+<h4>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h4>
+
+<ul>
+<li>Homepage: <a href="http://repat.de">http://repat.de</a>
+</li>
+<li>e-mail: <a href="mailto:repat@repat.de">repat@repat.de</a>
+</li>
+<li>Twitter: <a href="https://twitter.com/twitterhandle" title="repat123 on twitter">@repat123</a>
+</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Morsecode As A Service maintained by <a href="https://github.com/repat">repat</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

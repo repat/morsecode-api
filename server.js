@@ -5,7 +5,6 @@ function encode(req, res, next) {
   var array = {}
   array.plaintext = req.params.string;
   array.morsecode = morse.encode(req.params.string);
-  console.log(array.morsecode);
 
   res.send(array);
   next();
@@ -13,8 +12,8 @@ function encode(req, res, next) {
 
 function decode(req, res, next) {
   var array = {}
-  array.morsecode = req.params.string;
   array.plaintext = morse.decode(req.params.string);
+  array.morsecode = req.params.string;
 
   res.send(array);
   next();

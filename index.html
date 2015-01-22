@@ -92,16 +92,12 @@
 <h4>
 <a id="sourcecode-and-deployment" class="anchor" href="#sourcecode-and-deployment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sourcecode and deployment</h4>
 
-<p>Get the sourcecode from GitHub.</p>
+<p>Get the sourcecode from GitHub, install npm modules and start the app.</p>
 
-<pre><code>$ mkdir morsecode-api
+<pre><code>$ git clone https://github.com/repat/morsecode-api.git
 $ cd morsecode-api
-$ git clone https://github.com/repat/morsecode-api.git
-</code></pre>
-
-<p>To start the app, change the <code>port</code> variable and run</p>
-
-<pre><code>$ nodemon server.js
+$ npm install
+$ nodemon server.js
 </code></pre>
 
 <p>As you might have noticed, the <code>Procfile</code> file is an indicator that this code could also be run on <a href="http://heroku.com">Heroku</a>. Assuming that the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up">Heroku Toolbelt is installed</a> and the repository is <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#prepare-the-app">prepared</a> you can follow the normal <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app">instruction</a> for deploying an app. Make sure that the <code>port</code> variable is set to <code>process.env.PORT</code>.</p>

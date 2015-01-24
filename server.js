@@ -2,20 +2,20 @@ var restify = require('restify');
 var morse = require('morse');
 
 function encode(req, res, next) {
-  var array = {}
-  array.plaintext = req.params.string;
-  array.morsecode = morse.encode(req.params.string);
+  var answer = {}
+  answer.plaintext = req.params.string;
+  answer.morsecode = morse.encode(req.params.string);
 
-  res.send(array);
+  res.send(answer);
   next();
 }
 
 function decode(req, res, next) {
-  var array = {}
-  array.plaintext = morse.decode(req.params.string);
-  array.morsecode = req.params.string;
+  var answer = {}
+  answer.plaintext = morse.decode(req.params.string);
+  answer.morsecode = req.params.string;
 
-  res.send(array);
+  res.send(answer);
   next();
 }
 

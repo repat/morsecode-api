@@ -56,16 +56,16 @@
 
 <p>Submit one parameter <code>string</code> e.g.</p>
 
-<p><code>$ curl http://www.morsecode-api.de/encode/LOVE</code></p>
+<p><code>$ curl http://www.morsecode-api.de/encode/foo</code></p>
 
 <h5>
 <a id="response" class="anchor" href="#response" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response</h5>
 
-<p>The Response has 2 attributes: <code>plaintext</code> and <code>morsecode</code>, e.g.</p>
+<p>The response has two attributes: <code>plaintext</code> and <code>morsecode</code>, e.g.</p>
 
 <pre><code>{
-  "plaintext":"LOVE",
-  "morsecode":".-.. --- ...- ."
+  "plaintext":"FOO",
+  "morsecode":"..-. --- ---"
 }
 </code></pre>
 
@@ -78,16 +78,16 @@
 
 <p>Submit one parameter <code>string</code> and <a href="https://en.wikipedia.org/wiki/Percent-encoding">URL-encode</a> the white spaces to <code>%20</code> e.g.</p>
 
-<p><code>$ curl http://www.morsecode-api.de/decode/....%20.-%20-%20.</code></p>
+<p><code>$ curl http://www.morsecode-api.de/decode/-...%20.-%20.-.</code></p>
 
 <h5>
 <a id="response-1" class="anchor" href="#response-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response</h5>
 
-<p>The Response has 2 attributes: <code>plaintext</code> and <code>morsecode</code>, e.g.</p>
+<p>The response has two attributes: <code>plaintext</code> and <code>morsecode</code>, e.g.</p>
 
 <pre><code>{
-  "plaintext":"HATE",
-  "morsecode":".... .- - ."
+  "plaintext":"BAR",
+  "morsecode":"-... .- .-."
 }
 </code></pre>
 
@@ -103,6 +103,19 @@ $ nodemon server.js
 </code></pre>
 
 <p>As you might have noticed, the <code>Procfile</code> file is an indicator that this code could also be run on <a href="http://heroku.com">Heroku</a>. Assuming that the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up">Heroku Toolbelt is installed</a> and the repository is <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#prepare-the-app">prepared</a> you can follow the normal <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app">instruction</a> for deploying an app. Make sure that the <code>port</code> variable is set to <code>process.env.PORT</code>.</p>
+
+<h4>
+<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h4>
+
+<p>I wrote a couple of tests with <a href="http://frisbyjs.com/">frisby</a> in <code>frisby_spec.js</code> using the <code>www.morsecode-api.de</code> server. If you use <code>localhost:8080</code> instead, you will get an error described in <a href="https://github.com/vlucas/frisby/issues/133">issue #133</a>. This should be the outcome:</p>
+
+<pre><code>$ jasmine-node frisby_spec.js 
+Testing with http://www.morsecode-api.de/
+............
+
+Finished in 2.958 seconds
+12 tests, 67 assertions, 0 failures, 0 skipped
+</code></pre>
 
 <h4>
 <a id="licenses" class="anchor" href="#licenses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licenses</h4>

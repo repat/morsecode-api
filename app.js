@@ -5,27 +5,30 @@ module.exports = {
 }
 
 var morse = require('morse');
+var _ = require("underscore");
 
 const DIT = ".", DAH = "-", WS = " ", API_DOKU = 'https://repat.github.io/morsecode-api/';
 
 function encode(req, res, next) {
-  var answer = {}
-  answer.plaintext = req.params.string.toUpperCase();
-  answer.morsecode = morse.encode(req.params.string);
+  var answer = {plaintext:"", morsecode:""};
+
+  if(!(_.isEmpty(req.params))) {
+    answer.plaintext = req.params.string.toUpperCase();
+    answer.morsecode = morse.encode(req.params.string);
+  }
 
   res.send(answer);
   next();
 }
 
 function decode(req, res, next) {
-  var answer = {}
-  if (isValidMorseCode(req.params.string)) {
-    answer.plaintext = morse.decode(req.params.string);
+  var answer = {plaintext:"", morsecode:""};
+  if(!(_.isEmpty(req.params))) {
+    if (isValidMorseCode(req.params.string)) {
+      answer.plaintext = morse.decode(req.params.string);
+      answer.morsecode = req.params.string;
+    }
   }
-  else {
-    answer.plaintext = ""
-  }
-  answer.morsecode = req.params.string;
 
   res.send(answer);
   next();

@@ -1,14 +1,15 @@
 {
-    "name": "morsecode-api",
-    "private": true,
-    "main": "server.js",
-    "engines": {
-      "node": "0.10.33",
-      "npm" : "1.4.28"
-    },
-    "dependencies": {
-        "nodemon": "^1.2.1",
-        "restify": "^2.8.3",
-        "morse": "^0.1.0"
-    }
+  "name": "morsecode-api",
+  "private": true,
+  "main": "server.js",
+  "engines": {
+    "node": "0.10.33",
+    "npm": "1.4.28"
+  },
+  "dependencies": {
+    "morse": "^0.1.0",
+    "nodemon": "^1.2.1",
+    "restify": "^2.8.3",
+    "underscore": "^1.8.3"
+  }
 }

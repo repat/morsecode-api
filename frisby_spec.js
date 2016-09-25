@@ -7,7 +7,7 @@ const ENDPOINT = 'http://www.morsecode-api.de/';
 console.log("Testing with " + ENDPOINT);
 
 frisby.create('Morsecode As A Service Encode One Letter')
-  .get(ENDPOINT + 'encode/A')
+  .get(ENDPOINT + 'encode?string=A')
   .expectStatus(200)
   .expectHeaderContains('content-type', 'application/json')
   .expectJSON({
@@ -20,7 +20,7 @@ frisby.create('Morsecode As A Service Encode One Letter')
   })
 .toss();
 frisby.create('Morsecode As A Service Decode One Letter')
-  .get(ENDPOINT + 'decode/.-')
+  .get(ENDPOINT + 'decode?string=.-')
   .expectStatus(200)
   .expectHeaderContains('content-type', 'application/json')
   .expectJSON({
@@ -33,7 +33,7 @@ frisby.create('Morsecode As A Service Decode One Letter')
   })
 .toss();
 frisby.create('Morsecode As A Service Encode Word')
-  .get(ENDPOINT + 'encode/Foo')
+  .get(ENDPOINT + 'encode?string=Foo')
   .expectStatus(200)
   .expectHeaderContains('content-type', 'application/json')
   .expectJSON({
@@ -46,7 +46,7 @@ frisby.create('Morsecode As A Service Encode Word')
   })
 .toss();
 frisby.create('Morsecode As A Service Decode Word')
-  .get(ENDPOINT + 'decode/-...%20.-%20.-.')
+  .get(ENDPOINT + 'decode?string=-...%20.-%20.-.')
   .expectStatus(200)
   .expectHeaderContains('content-type', 'application/json')
   .expectJSON({
@@ -59,7 +59,7 @@ frisby.create('Morsecode As A Service Decode Word')
   })
 .toss();
 frisby.create('Morsecode As A Service Encode Empty String')
-  .get(ENDPOINT + 'encode/')
+  .get(ENDPOINT + 'encode')
   .expectStatus(200)
   .expectHeaderContains('content-type', 'application/json')
   .expectJSON({
@@ -129,30 +129,27 @@ frisby.create('Morsecode As A Service Root')
 .toss();
 frisby.create('Morsecode As A Service encode without slash')
   .get(ENDPOINT + 'encode')
-  .expectStatus(404)
+  .expectStatus(200)
   .expectHeaderContains('content-type', 'application/json')
   .expectJSON({
-  "code": "ResourceNotFound",
-  "message": "/encode does not exist"
+  "plaintext": "",
+  "morsecode": ""
 })
 .expectJSONTypes({
-    code: String,
-    message: String
+    plaintext: String,
+    morsecode: String
   })
 .toss();
 frisby.create('Morsecode As A Service Decode without slash')
   .get(ENDPOINT + 'decode')
-  .expectStatus(404)
+  .expectStatus(200)
   .expectHeaderContains('content-type', 'application/json')
   .expectJSON({
-  "code": "ResourceNotFound",
-  "message": "/decode does not exist"
+  "plaintext": "",
+  "morsecode": ""
 })
 .expectJSONTypes({
-    code: String,
-    message: String
+    plaintext: String,
+    morsecode: String
   })
 .toss();
-
-
-

@@ -7,8 +7,10 @@ var httpOptions = {
 
 var server = restify.createServer(httpOptions);
 
-server.get('/encode/:string', app.encode);
-server.get('/decode/:string', app.decode);
+server.use(restify.queryParser());
+
+server.get('/encode/', app.encode);
+server.get('/decode/', app.decode);
 server.get('/', app.redirectToDocumentation);
 
 var port = process.env.PORT || 8080;

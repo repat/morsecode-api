@@ -56,7 +56,7 @@
 
 <p>Submit one parameter <code>string</code> e.g.</p>
 
-<p><code>$ curl http://www.morsecode-api.de/encode/foo</code></p>
+<p><code>$ curl http://www.morsecode-api.de/encode?string=foo</code></p>
 
 <h5>
 <a id="response" class="anchor" href="#response" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response</h5>
@@ -78,7 +78,7 @@
 
 <p>Submit one parameter <code>string</code> and <a href="https://en.wikipedia.org/wiki/Percent-encoding">URL-encode</a> the white spaces to <code>%20</code> e.g.</p>
 
-<p><code>$ curl http://www.morsecode-api.de/decode/-...%20.-%20.-.</code></p>
+<p><code>$ curl http://www.morsecode-api.de/decode?string=-...%20.-%20.-.</code></p>
 
 <h5>
 <a id="response-1" class="anchor" href="#response-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Response</h5>
@@ -131,6 +131,8 @@ Finished in 2.958 seconds
 <a href="http://mcavage.me/node-restify/">restify</a> (MIT)</li>
 <li>
 <a href="http://frisbyjs.com/">frisby</a> (BSD)</li>
+<li>
+<a href="http://underscorejs.org/">underscore</a> (MIT)</li>
 </ul>
 
 <h4>
